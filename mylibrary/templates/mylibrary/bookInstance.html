@@ -1,0 +1,25 @@
+{% extends "mylibrary/base_generic.html" %}
+
+{% block content %}
+<h1>Local Library Home</h1>
+
+  <p>Welcome to <em>LocalLibrary</em>, a very basic Django website </p>
+
+
+  	{% for detail in bDetail %}
+		
+		<h2>Book: {{detail.book.title}}</h2>
+		<p> Book Author: {{detail.book.author}}</p>
+		<p> Due Date: {{detail.due_date}}</p>
+		{% if detail.status == 'Reserved'%}
+			<p> Book Status: Reserved</p>
+		{% endif %}
+		{% if detail.status == 'Booked'%}
+			<p> Book Status: Booked</p>
+		{% endif %}
+		{% if detail.status == 'Available'%}
+			<p> Book Status: Available</p>
+		{% endif %}
+
+	{% endfor %}
+{% endblock %}
